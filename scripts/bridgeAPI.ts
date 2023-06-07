@@ -8,8 +8,8 @@ dotenv.config();
 const EthBridgeAdminPrivateKey = process.env.ETH_PRIVATE_KEY
 
 // Set Providers
-const EthProvider = new ethers.provider.JsonRpcProvider('https://infura.io/v3/' + process.env.INFURA_API_KEY);
-const BscProvider = new ethers.provider.WebSocketProvider('wss://testnet-dex.binance.org/api/');
+const EthProvider = new ethers.providers.JsonRpcProvider('https://infura.io/v3/' + process.env.INFURA_API_KEY);
+const BscProvider = new ethers.providers.WebSocketProvider('wss://testnet-dex.binance.org/api/');
 
 // Set Contract Addresses
 const TruthEthAddress = '0xB83cA21FED7054bAE76613cEd0215FaA06706361'
@@ -22,7 +22,7 @@ interface TokenBurn {
 
 async function main() {
   // Get the signer's address
-  const [signer] = await ethers.getSigners();
+  const signer = new ethers.Wallet(EthBridgeAdminPrivateKey!);
   console.log('Signer:', signer.address);
 
   // Load Bridge Contracts
