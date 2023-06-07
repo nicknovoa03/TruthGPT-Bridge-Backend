@@ -1,5 +1,5 @@
 import { ethers } from 'hardhat';
-import TruthBSC from '../artifacts/contracts/TokenBsc.sol/TokenBsc.json';
+import BscBridge from '../artifacts/contracts/BridgeBsc.sol/BridgeBsc.json';
 
 async function main() {
   // Connect to the deployed contract instance
@@ -9,10 +9,10 @@ async function main() {
   console.log('Signer:', signer.address);
 
   // Load contract
-  const contractAddress = '0x853806fCa5Ee8a6Ac99Dc84a8e3596A4F6541796';
-  const TruthGptBridge = new ethers.Contract(contractAddress, TruthBSC.abi, signer);
+  const contractAddress = '0x8B263fB06dD0e97F6c75992B92f4D2b95e247C9D';
+  const TruthGptBridge = new ethers.Contract(contractAddress, BscBridge.abi, signer);
 
-  // Set Amount 
+  // Set Amount to burn of BscTruth
   const amount = ethers.utils.parseEther('1')
 
   // Call the contract function to write to the contract
