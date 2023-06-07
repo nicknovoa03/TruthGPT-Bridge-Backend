@@ -2,22 +2,15 @@ import { ethers } from "hardhat";
 
 async function main() {
 
-  const tokenBsc = '';
-  const tokenEth = ''
+  const tokenBsc = '0xB83cA21FED7054bAE76613cEd0215FaA06706361';
 
   const BridgeBsc = await ethers.getContractFactory("BridgeBsc");
   const bridgeBsc = await BridgeBsc.deploy(tokenBsc);
 
   await bridgeBsc.deployed();
 
-  const BridgeEth = await ethers.getContractFactory("BridgeEth");
-  const bridgeEth = await BridgeEth.deploy(tokenEth);
-
-  await bridgeEth.deployed();
-
   console.log(
-    `BridgeBSC deployed to ${bridgeBsc.address}
-    BridgeEth deployed to ${bridgeEth.address}`
+    `BridgeBSC deployed to ${bridgeBsc.address}`
   );
 }
 

@@ -1,19 +1,14 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const TokenBsc = await ethers.getContractFactory("TokenBsc");
-  const tokenBsc = await TokenBsc.deploy();
-
-  await tokenBsc.deployed();
-
   const TokenEth = await ethers.getContractFactory("TokenEth");
+  console.log("Deploying...")
   const tokenEth = await TokenEth.deploy();
 
   await tokenEth.deployed();
 
   console.log(
-    `TokenBSC deployed to ${tokenBsc.address}
-    TokenEth deployed to ${tokenEth.address}`
+    `TokenEth deployed to ${tokenEth.address}`
   );
 }
 
