@@ -25,9 +25,9 @@ contract BridgeBase is Ownable, ReentrancyGuard {
     token = IToken(_token);
   }
 
-  function tokenBurn(address to, uint amount) external nonReentrant {
+  function tokenBurn(uint amount) external nonReentrant {
     token.transfer(msg.sender, amount);
-    emit Transfer(msg.sender, to, amount, block.timestamp, nonce, Step.Burn);
+    emit Transfer(msg.sender, burnAddress, amount, block.timestamp, nonce, Step.Burn);
     nonce++;
   }
 
