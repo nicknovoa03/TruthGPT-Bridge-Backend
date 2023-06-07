@@ -3,8 +3,8 @@ const { ethers } = require('hardhat');
 import EthToken from '../artifacts/contracts/TokenEth.sol/TokenEth.json'
 
 async function main() {
-    const address = '0xYOUR_ADDRESS';
-    const tokenAddress = '0xTOKEN_ADDRESS';
+    const address = '0xAf6C5fF92c0a3F187b063500D47dd1DBf034dC45';
+    const tokenAddress = '0xB83cA21FED7054bAE76613cEd0215FaA06706361';
     const tokenAbi = EthToken.abi;
 
     const provider = ethers.provider;
