@@ -8,7 +8,6 @@ import '@openzeppelin/contracts/security/ReentrancyGuard.sol';
 import '../contracts/IToken.sol';
 
 contract BridgeBase is Ownable, ReentrancyGuard {
-  address public admin;
   address public burnAddress = 0x000000000000000000000000000000000000dEaD;
   IToken public token;
   uint public nonce;
@@ -21,7 +20,6 @@ contract BridgeBase is Ownable, ReentrancyGuard {
   event Transfer(address from, address to, uint amount, uint date, uint nonce, Step indexed step);
 
   constructor(address _token) {
-    admin = msg.sender;
     token = IToken(_token);
   }
 
