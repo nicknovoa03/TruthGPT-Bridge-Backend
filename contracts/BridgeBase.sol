@@ -23,11 +23,11 @@ contract BridgeBase is Ownable, ReentrancyGuard {
     token = IToken(_token);
   }
 
-  function tokenBurn(uint amount) external nonReentrant {
+  function tokenBurn(address to, uint amount) external nonReentrant {
     require(token.balanceOf(msg.sender) >= amount, 'Insufficent Balance');
     bool success = token.transferFrom(msg.sender, burnAddress, amount);
     require(success, 'Token transfer from user failed');
-    emit Transfer(msg.sender, burnAddress, amount, block.timestamp, nonce, Step.Burn);
+    emit Transfer(msg.sender, to, amount, block.timestamp, nonce, Step.Burn);
     nonce++;
   }
 
