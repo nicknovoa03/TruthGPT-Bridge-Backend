@@ -12,8 +12,9 @@ async function main() {
     const EthBridgeContract = new ethers.Contract(bridgeAddress, tokenAbi, signer);
 
     await EthBridgeContract.withdrawTruth(address, ethers.utils.parseEther('.001'));
-
     await EthBridgeContract.withdraw(address);
+    console.log(`Complete`);
+
 }
 
 main()
