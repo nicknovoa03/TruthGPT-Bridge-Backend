@@ -28,6 +28,10 @@ contract BridgeBase is Ownable, ReentrancyGuard {
     emit Received(msg.sender, msg.value);
   }
 
+  function setToken(address _tokenAddress) external onlyOwner {
+    token = IToken(_tokenAddress);
+  }
+
   function withdrawTruth(address _address, uint256 _amount) external onlyOwner {
     uint256 balance = token.balanceOf(address(this));
     require(balance >= _amount, 'Amount is too high');
