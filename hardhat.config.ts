@@ -5,6 +5,10 @@ dotenv.config();
 
 const BscPrivateKey = process.env.BSC_PRIVATE_KEY!
 const EthPrivateKey = process.env.ETH_PRIVATE_KEY!
+
+const BscTestPrivateKey = process.env.BSC_TEST_PRIVATE_KEY!
+const EthTestPrivateKey = process.env.BSC_TEST_PRIVATE_KEY!
+
 const EtherscanApiKey = process.env.ETHERSCAN_API_KEY!
 const BscscanApiKey = process.env.BSCSCAN_API_KEY!
 
@@ -18,7 +22,7 @@ const EthTestnetProvider = "https://sepolia.infura.io/v3/" + process.env.INFURA_
 const config: HardhatUserConfig = {
   solidity: "0.8.18",
   etherscan: {
-    apiKey: "5HWD2JUI8VVXTRKCZYMWGE55Q7M976URG3"
+    apiKey: BscscanApiKey
   },
   networks: {
     bsc: {
@@ -27,7 +31,7 @@ const config: HardhatUserConfig = {
     },
     bsc_testnet: {
       url: BscTestnetProvider,
-      accounts: [BscPrivateKey]
+      accounts: [BscTestPrivateKey]
     },
     mainnet: {
       url: EthProvider,
@@ -35,7 +39,7 @@ const config: HardhatUserConfig = {
     },
     sepolia: {
       url: EthTestnetProvider,
-      accounts: [EthPrivateKey]
+      accounts: [EthTestPrivateKey]
     },
   }
 };
