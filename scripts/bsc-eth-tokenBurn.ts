@@ -17,11 +17,11 @@ async function main() {
   const BscTruthTokenContract = new ethers.Contract(bscTruthTokenAddress, BscTruthToken.abi, signer)
 
   // Load Bsc Bridge contract
-  const bscBrigdeContractAddress = '0x22fd64d9b62Dfa12a902E30f8E5231ff0b9C604B';
+  const bscBrigdeContractAddress = '0xE12D1a1Abbc5f3a9FF0CdEeD2Bb238d86D6620A5';
   const TruthGptBridgeContract = new ethers.Contract(bscBrigdeContractAddress, BscBridge.abi, signer);
 
   // Set Amount to burn of BscTruth
-  const amount = ethers.utils.parseUnits('1')
+  const amount = ethers.utils.parseUnits('.001')
   console.log("amount to burn:", amount)
 
   console.log('Approving')
