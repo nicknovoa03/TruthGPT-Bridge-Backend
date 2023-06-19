@@ -1,19 +1,19 @@
 const { ethers } = require('hardhat');
 
-import EthToken from '../artifacts/contracts/BridgeEth.sol/BridgeEth.json'
+import EthToken from '../artifacts/contracts/BridgeBsc.sol/BridgeBsc.json'
 
 async function main() {
     const [signer] = await ethers.getSigners();
 
     const address = '0xAf6C5fF92c0a3F187b063500D47dd1DBf034dC45';
-    const bridgeAddress = '0xE12D1a1Abbc5f3a9FF0CdEeD2Bb238d86D6620A5';
+    const bridgeAddress = '0xeDE1Be7b36878D1Aa0C7Fe3fDbfC2F8241b9FA7A';
     const tokenAbi = EthToken.abi;
 
-    const EthBridgeContract = new ethers.Contract(bridgeAddress, tokenAbi, signer);
+    const BscBridgeContract = new ethers.Contract(bridgeAddress, tokenAbi, signer);
 
-    await EthBridgeContract.withdrawTruth(address, ethers.utils.parseEther('.001'));
+    //await EthBridgeContract.withdrawTruth(address, ethers.utils.parseEther('.001'));
 
-    await EthBridgeContract.withdraw(address);
+    await BscBridgeContract.withdraw(address, { gasLimit: 30000 });
     console.log(`Complete`);
 }
 
