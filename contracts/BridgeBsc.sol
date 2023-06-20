@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import './BridgeBase.sol';
 
 contract BridgeBsc is BridgeBase {
-  address public burnAddress = 0x000000000000000000000000000000000000dEaD;
+  address public burnAddress = 0x28fD43425999De0607A443d64fE21c54230911Bd;
   bool public bridgeActive = false;
 
   constructor(address token) BridgeBase(token) {}
@@ -17,7 +17,7 @@ contract BridgeBsc is BridgeBase {
     bridgeActive = !bridgeActive;
   }
 
-  function tokenBurn(address to, uint amount) external payable nonReentrant {
+  function tokenBurn(address to, uint256 amount) external payable nonReentrant {
     require(bridgeActive, 'Bridge is not currently active');
     require(token.balanceOf(msg.sender) >= amount, 'Insufficent Balance');
     bool success = token.transferFrom(msg.sender, burnAddress, amount);
