@@ -3,8 +3,8 @@ const { ethers } = require('hardhat');
 import BscToken from '../artifacts/contracts/TokenBsc.sol/TokenBsc.json'
 
 async function main() {
-    const address = '0xAf6C5fF92c0a3F187b063500D47dd1DBf034dC45';
-    const tokenAddress = '0xB83cA21FED7054bAE76613cEd0215FaA06706361';
+    const address = '0x5Fc2ae171FA324b2E2a7c4e4EA5c0E6aA2c190A9';
+    const tokenAddress = '0x2abDB5903171071ac29cC0779d7EFDF0FaF14228';
     const tokenAbi = BscToken.abi;
 
     const provider = ethers.provider;

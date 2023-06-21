@@ -2,7 +2,7 @@ import { ethers } from "hardhat";
 
 async function main() {
 
-  const tokenBsc = '0xB83cA21FED7054bAE76613cEd0215FaA06706361';
+  const tokenBsc = '0x2abDB5903171071ac29cC0779d7EFDF0FaF14228';
 
   const BridgeBsc = await ethers.getContractFactory("BridgeBsc");
   const bridgeBsc = await BridgeBsc.deploy(tokenBsc);

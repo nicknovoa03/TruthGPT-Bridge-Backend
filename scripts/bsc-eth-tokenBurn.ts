@@ -10,19 +10,19 @@ async function main() {
   console.log('Signer:', signer.address);
 
   //Get the recievers address
-  const to = '0xAf6C5fF92c0a3F187b063500D47dd1DBf034dC45'
+  const to = await signer.getAddress()
 
   // Load Bsc Truth Token
-  const bscTruthTokenAddress = '0xB83cA21FED7054bAE76613cEd0215FaA06706361'
+  const bscTruthTokenAddress = '0x2abDB5903171071ac29cC0779d7EFDF0FaF14228'
   const BscTruthTokenContract = new ethers.Contract(bscTruthTokenAddress, BscTruthToken.abi, signer)
 
   // Load Bsc Bridge contract
-  const bscBrigdeContractAddress = '0xE12D1a1Abbc5f3a9FF0CdEeD2Bb238d86D6620A5';
+  const bscBrigdeContractAddress = '0x9Af4010CCAFAd067ff8b961eC94371fc805823b5';
   const TruthGptBridgeContract = new ethers.Contract(bscBrigdeContractAddress, BscBridge.abi, signer);
 
   // Set Amount to burn of BscTruth
-  const amount = ethers.utils.parseUnits('.001')
-  console.log("amount to burn:", amount)
+  const amount = ethers.utils.parseEther(".001")
+  console.log("amount to burn:", ethers.utils.formatEther(amount))
 
   console.log('Approving')
   // Approve Bsc Bridge to spend callers Truth
@@ -31,7 +31,9 @@ async function main() {
   await approveTx.wait();
   console.log('Burning')
   // Call the contract function to write to the contract
-  const tx = await TruthGptBridgeContract.tokenBurn(to, amount, { value: ethers.utils.parseEther("0.01") });
+  const tx = await TruthGptBridgeContract.tokenBurn(to, amount, {
+    value: ethers.utils.parseEther('.001'),
+  });
   //Wait for the transaction to be mined
   await tx.wait();
 }
